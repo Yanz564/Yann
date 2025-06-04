@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Smartphone Specifications Showcase</title>
+<style>
+  /* CSS Variables for colors and fonts */
+  :root {
+    --primary-color: #4a90e2;
+    --secondary-color: #50e3c2;
+    --background-color: #f5f7fa;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --card-bg: #ffffff;
+    --text-color: #333333;
+  }
+
+  /* Reset some defaults */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: var(--font-family);
+    background: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  header {
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    padding: 2rem 1rem;
+    color: white;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(74,144,226,0.4);
+  }
+
+  header h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+    margin-bottom: 0.5rem;
+  }
+  header p {
+    font-weight: 400;
+    font-size: 1.1rem;
+    opacity: 0.85;
+  }
+
+  main {
+    flex-grow: 1;
+    padding: 2rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  /* Grid layout for specs cards */
+  .phone-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+    gap: 2rem;
+  }
+  
+  .phone-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .phone-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  }
+
+  .phone-image-container {
+    position: relative;
+    overflow: hidden;
+    background: #e0e8f7;
+    flex-shrink: 0;
+  }
+
+  .phone-image-container img {
+    width: 100%;
+    display: block;
+    transition: transform 0.6s ease;
+  }
+
+  .phone-card:hover .phone-image-container img {
+    transform: scale(1.05) rotate(2deg);
+  }
+
+  .phone-info {
+    padding: 1.5rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .phone-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+  }
+
+  .phone-subtitle {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+    font-style: italic;
+  }
+
+  .spec-list {
+    list-style: none;
+    flex-grow: 1;
+  }
+
+  .spec-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid #eee;
+    font-size: 0.95rem;
+  }
+
+  .spec-list li span:first-child {
+    font-weight: 600;
+    color: #555;
+  }
+
+  .spec-list li span:last-child {
+    color: #222;
+  }
+
+  .btn-learn-more {
+    margin-top: 1rem;
+    align-self: flex-start;
+    padding: 0.6rem 1.2rem;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 3px 6px rgba(74,144,226,0.5);
+   text-decoration: none;
+  }
+
+  .btn-learn-more:hover {
+    background-color: var(--secondary-color);
+    box-shadow: 0 6px 12px rgba(80,227,194,0.7);
+  }
+
+  footer {
+    background: #222;
+    color: #eee;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* Smooth fade-in animations for each card */
+  .phone-card {
+    opacity: 0;
+    transform: translateY(20px);
+    animation-fill-mode: forwards;
+    animation-name: fadeInUp;
+    animation-duration: 0.8s;
+    animation-timing-function: ease-out;
+  }
+
+  .phone-card:nth-child(1) {
+    animation-delay: 0.2s;
+  }
+  .phone-card:nth-child(2) {
+    animation-delay: 0.4s;
+  }
+  .phone-card:nth-child(3) {
+    animation-delay: 0.6s;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive typography */
+  @media (max-width: 480px) {
+    header h1 {
+      font-size: 1.8rem;
+    }
+    .phone-title {
+      font-size: 1.3rem;
+    }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>SPECIFICATIONS</h1>
+  <p>Web ini dibuat dengan bantuan ai Dan informasi Spesifikasi ini Gua ambil Dii GSMarena</p>
+</header>
+<main>
+  <section class="phone-container">
+    <!-- Phone Card 1 -->
+    <article class="phone-card" aria-label="Xiaomi 15 Ultra">
+      <div class="phone-image-container">
+        <img src="15ultra.jpeg" alt="Xiaomi 15 Ultra" loading="lazy" />
+      </div>
+      <div class="phone-info">
+        <h2 class="phone-title">XIAOMI 15 ULTRA</h2>
+        <p class="phone-subtitle">All Rounder</p>
+        <ul class="spec-list">
+          <li><span>Layar :</span><span>6.7" AMOLED, 120Hz, 1440 x 3200</span></li>
+          <li><span>Chipset :</span><span>Snapdragon 8 X Elite</span></li>
+          <li><span>Ram :</span><span>12GB / 16GB</span></li>
+          <li><span>Rom :</span><span>256GB / 512GB / 1TB</span></li>
+          <li><span>Kamera :</span><span>50MP + 50MP + 200MP + 50MP</span></li>
+          <li><span>Baterai :</span><span>5410 mAh, 90W</span></li>
+          <li><span>OS :</span><span>Android 15, HyperOS</span></li>
+          <li><span>AnTuTu :</span><span>2534638</span></li>
+        </ul>
+        <a href="https://www.gsmarena.com/xiaomi_15-13472.php"<button class="btn-learn-more" aria-label="Learn more about XIAOMI 15 ULTRA">Info lebih lanjut</button></a>
+      </div>
+    </article>
+
+    <!-- Phone Card 2 -->
+    <article class="phone-card" aria-label="Vivo X200 Pro">
+      <div class="phone-image-container">
+        <img src="Vivox200.jpeg" loading="lazy" />
+      </div>
+      <div class="phone-info">
+        <h2 class="phone-title">VIVO X200 PRO</h2>
+        <p class="phone-subtitle">All Rounder</p>
+        <ul class="spec-list">
+          <li><span>Layar :</span><span>6.7" AMOLED, 120Hz, 1260 x 2800</span></li>
+          <li><span>Chipset :</span><span>DIMENSITY 9400</span></li>
+          <li><span>Ram :</span><span>12GB / 16GB</span></li>
+          <li><span>Rom :</span><span>256GB / 512GB / 1TB</span></li>
+          <li><span>Kamera :</span><span>50MP + 200MP + 50MP </span></li>
+          <li><span>Baterai :</span><span>6000 mAh, 90W</span></li>
+          <li><span>OS :</span><span>Android 15, FunTouch</span></li>
+          <li><span>AnTuTu :</span><span>2609095</span></li>
+        </ul>
+        <a href="https://www.gsmarena.com/vivo_x200_pro-13410.php"<button class="btn-learn-more" aria-label="Learn more about VIVO X200 PRO">Info lebih lanjut</button></a>
+      </div>
+    </article>
+
+    <!-- Phone Card 3 -->
+    <article class="phone-card" aria-label="OPPO FIND X8 PRO">
+      <div class="phone-image-container">
+        <img src="Oppo.jpeg" loading="lazy" />
+      </div>
+      <div class="phone-info">
+        <h2 class="phone-title">OPPO FIND X8 PRO</h2>
+        <p class="phone-subtitle">All Rounder</p>
+        <ul class="spec-list">
+          <li><span>Layar :</span><span>6.7" AMOLED, 120Hz, 1264 X 2780</span></li>
+          <li><span>Chipset :</span><span>DIMENSITY 9400</span></li>
+          <li><span>RAM :</span><span>12GB / 16GB</span></li>
+          <li><span>ROM :</span><span>256GB / 512GB / 1TB</span></li>
+          <li><span>Kamera :</span><span>50MP + 50MP + 50MP + 50MP</span></li>
+          <li><span>Baterai :</span><span>5910 mAh, 80W</span></li>
+          <li><span>OS :</span><span>Android 15, ColorOS</span></li>
+          <li><span>AnTuTu :</span><span>2701287</span></li>
+        </ul>
+        <a href="https://www.gsmarena.com/oppo_find_x8_pro-13467.php"<button class="btn-learn-more" aria-label="Learn more about OPPO FIND X8 PRO">Info lebih lanjut</button></a>
+      </div>
+    </article>
+  </section>
+</main>
+
+<footer>
+  &copy; 2025 Phone Spec @Yan.
+</footer>
+
+<script>
+  // Add subtle scale animation on "Learn More" button clicks to simulate interaction
+  document.querySelectorAll('.btn-learn-more').forEach(button => {
+    button.addEventListener('click', () => {
+      button.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        button.style.transform = 'scale(1)';
+        alert('More details feature coming soon!');
+      }, 150);
+    });
+  });
+</script>
+</body>
+</html>
+
